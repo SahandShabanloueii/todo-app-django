@@ -1,21 +1,33 @@
 {% extends "base.html" %}
 
 
+
 {% block content %}
 
-<h1>Todo list:</h1>
+<h1>Todo List</h1>
+<br><br>
+
+<div class="card bg-light mb-3" style="max-width: 25rem;">
+    <div class="card-body">
+        <form method="post">{% csrf_token %}
+            {{form.as_p}}
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
 <br>
-<form method="post">{% csrf_token %}
-    {{form.as_p}}
-    <button type='submit' class="btn btn-primary">Submit</button>
-</form>
-<br>
+</form><br>
 {% for item in query %}
-    <ul>
-        <li>{{item.title}}</li>
-        <li>{{item.created}}</li>
-        <li>{{item.category}}</li>
-    </ul>
+<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+    <div class="card-header"><a class="link-dark" href="{% url 'task_detail' item.pk %}">{{ item.category }}</a>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ item.title }}</h5>
+      <p class="card-text">{{ item.created }}</p>
+    </div>
+</div>
+<br>
 {% endfor %}
 
 {% endblock content %}
