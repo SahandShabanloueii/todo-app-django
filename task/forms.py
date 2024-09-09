@@ -8,4 +8,4 @@ class TaskCreateForm(forms.ModelForm):
     created = forms.DateField(widget=DataInput)
     class Meta:
         model = TodoTask
-        fields = ('title', 'created', 'category')
+        fields = ('title', 'content', 'created', 'category')

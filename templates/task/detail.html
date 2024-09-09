@@ -4,14 +4,16 @@
 
 
 <div class="card bg-light mb-3" style="max-width: 18rem;">
-    <div class="card-header">{{ object.category }}
-    </div>
+    <div class="card-header">{{ object.category }}</div>
     <div class="card-body">
       <h5 class="card-title">{{ object.title }}</h5>
+      <p class="card-text">{{ object.content }}</p>
       <p class="card-text">{{ object.created }}</p>
     </div>
+    <br>
+    <a class="btn btn-outline-danger" href="{% url 'delete_task' object.id %}" style="margin: 0.5rem">Delete Task</a>
 </div>
 
-<a class="btn btn-outline-danger" href="{% url 'delete_task' object.id %}">Delete Task</a>
+
 
 {% endblock content %}
