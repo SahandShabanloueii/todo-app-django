@@ -7,9 +7,10 @@
 <h1>Todo List</h1>
 <br><br>
 
-<div class="card bg-light mb-3" style="max-width: 25rem;">
+<div class="card bg-light mb-3" style="max-width: 99%;">
     <div class="card-body">
-        <form method="post">{% csrf_token %}
+        <form method="post">
+            {% csrf_token %}
             {{form.as_p}}
             <br>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -19,7 +20,7 @@
 <br>
 </form><br>
 {% for item in query %}
-<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+<div class="card text-white bg-info mb-3" style="max-width: 99%;">
     <div class="card-header">{{ item.category }}</div>
     <div class="card-body">
       <h5 class="card-title"><a class="link-dark" href="{% url 'task_detail' item.pk %}">{{ item.title }}</a></h5>

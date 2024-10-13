@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #my_apps
     'task',
     'api',
+    'users',
 ]
 
 MIDDLEWARE = [

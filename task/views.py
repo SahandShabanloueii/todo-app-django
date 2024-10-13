@@ -1,11 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect
 from task.models import TodoTask, Category
 from task.forms import TaskCreateForm
 from django.views.generic import DetailView
 from django.contrib import messages
-
 
 def show_task(request):
     query = TodoTask.objects.all().order_by('created')
