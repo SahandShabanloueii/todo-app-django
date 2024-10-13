@@ -23,7 +23,7 @@ def todo_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def todo_detail(request, pk):
+def todo_detail(request, id):
 
     try:
         task = TodoTask.objects.get(pk=id)
@@ -62,7 +62,7 @@ def category_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def category_detail(request, pk):
+def category_detail(request, id):
 
     try:
         category = Category.objects.get(pk=id)
