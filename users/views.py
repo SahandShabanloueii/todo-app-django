@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
-from task.views import show_task
 from django.contrib import messages
+from task.views import show_task
 
 
 # Authentication views
