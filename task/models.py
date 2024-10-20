@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils import timezone
+from django import utils
 
 
 class Category(models.Model):
@@ -12,7 +12,7 @@ class Category(models.Model):
 class TodoTask(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField(blank=True)
-    created = models.DateField(default=timezone.now())
+    created = models.DateField(default=utils.timezone.now())
     category = models.ForeignKey(Category, default='General', on_delete=models.CASCADE)
 
     def __str__(self):

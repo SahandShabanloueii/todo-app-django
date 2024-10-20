@@ -4,30 +4,43 @@
 
 {% block content %}
 
-<h1>Todo List</h1>
-<br><br>
-
-<div class="card bg-light mb-3" style="max-width: 99%;">
-    <div class="card-body">
-        <form method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+<div style="display: flex;">
+    <div style="width:35%; display: inline-block; float:left; margin-right: 5rem;">
+        <br>
+        <div class="card bg-light mb-3" style="max-width: 99%;">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <p>Add new category: <input type="text" name="category" required></p>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 99%;">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        </form><br>
+    </div>
+    <div style="width: 50%; display: inline-block;">
+        <h2 style="font:bolder">Todo list</h2>
+        {% for item in query %}
+        <div class="card text-white bg-info mb-3" style="max-width: 99%;">
+            <div class="card-header">{{ item.category }}</div>
+            <div class="card-body">
+              <h5 class="card-title"><a class="link-dark" href="{% url 'task_detail' item.pk %}">{{ item.title }}</a></h5>
+              <p class="card-text">{{ item.created }}</p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
-<br>
-</form><br>
-{% for item in query %}
-<div class="card text-white bg-info mb-3" style="max-width: 99%;">
-    <div class="card-header">{{ item.category }}</div>
-    <div class="card-body">
-      <h5 class="card-title"><a class="link-dark" href="{% url 'task_detail' item.pk %}">{{ item.title }}</a></h5>
-      <p class="card-text">{{ item.created }}</p>
-    </div>
-</div>
-<br>
-{% endfor %}
 
 {% endblock content %}

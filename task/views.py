@@ -35,3 +35,10 @@ def delete_task(request, id):
     task = get_object_or_404(TodoTask, id=id)
     task.delete()
     return redirect('show_task')
+
+def add_category(request):
+    if request.method == 'POST':
+        serializer = CategorySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return redirect('show_task')

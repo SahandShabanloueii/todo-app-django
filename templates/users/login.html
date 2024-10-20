@@ -3,9 +3,7 @@
 
 {% block content %}
 
-<h1>Login</h1>
-<br><br>
-
+<h2>Login</h2>
 <div class="card bg-light mb-3" style="max-width: 25rem;">
     <div class="card-body">
         <form class="signup-form" action="/users/login/" method="POST">
@@ -20,6 +18,11 @@
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <br>
+        <form method="POST" action="{% url 'register_view' %}">
+            {% csrf_token %}
+            <button type="submit" class="nav-link"><span style="color: gray;">Don't have an account?</span></button>
         </form>
     </div>
 </div>
