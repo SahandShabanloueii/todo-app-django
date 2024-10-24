@@ -1,6 +1,5 @@
 from django.db import models
-from django import utils
-
+import datetime
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -12,7 +11,7 @@ class Category(models.Model):
 class TodoTask(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField(blank=True)
-    created = models.DateField(default=utils.timezone.now())
+    created = models.DateField(default = datetime.datetime.now())
     category = models.ForeignKey(Category, default='General', on_delete=models.CASCADE)
 
     def __str__(self):
